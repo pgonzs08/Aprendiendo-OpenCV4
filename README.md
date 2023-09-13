@@ -58,3 +58,44 @@ Día Lunes 11 de Septiembre de 2023:
 
 	Los valores de los canales son normalmente representados  on enteros entre 0 y 255, o lo que es lo mismo enteros de
 	8 bits o bytes. Por tanto la transformación entre imágenes de opencv y bytearrays de python es directa.
+
+Día Martes 12 de Septiembre de 2023:
+
+	ACCEDIENDO A DATOS CON NUMPY.ARRAY
+
+	El acceso y la modificación de valores de regiones de interés en un array de numpy se puede realizar a través de indexación
+	y las funciones item e itemset. La función item toma como argumentos los índices del valor que deseamos obtener como enteros
+	y devuelve el valor, mientras que itemset toma dos argumentos, una tupla con los índices del valor a modificar y el valor por
+	el que queremos sustituirlo. Por razones de eficiencia la modificación y obtencion de zonas más grandes es recomendable reali-
+	zarlas con funciones de opencv o con array slices de numpy.
+
+Día Miércoles 13 de Septiembre de 2023:
+
+	Los arrays de numpy tienen las propiedades shape, size y dtype que describen la forma del array, la cantidad de elementos que
+	contiene y el tipo de datos que guarda, respectivamente. Utilizando estas propiedades podemos modificar las imágenes para pro-
+	ducir efectos como los vistos en FotoSimetrica.png generado por AccessingDataWithNP.py. Conocer éstas propiedades es fundamen-
+	tal en el tratamiento de imágenes a través de OpenCV.
+
+	LEYENDO Y ESCRIBIENDO ARCHIVOS DE VIDEO
+
+	Quiero mencionar que para la sección de video he utilizado una animación hecha por el grupo de Alejandro Fernández Gómez en la
+	asignatura de animación por computador del grado de ingeniería informática en león. 
+
+	Para leer y escribir video opencv proporciona dos clases: VideoCapture y VideoWriter.
+
+	VideoCapture se instancia con el URI del archivo de video a leer. El formato de lectura aceptado puede variar según el OS y la
+	build de OpenCV, pero por lo general los video en formato AVI siempre se pueden leer. VideoCapture proporciona el método get pa-
+	ra obtener propiedades del vídeo pasándo como argumento un flag que simboliza la propiedad, casi siempre querremos tener los fps
+	del video, para lo que utilizaremos el flag cv2.CAP_PROP_FPS, y el tamaño del video, para el que utilizamos 
+	cv2.CAP_PROP_FRAME_WIDTH para la hanchura y cv2.CAP_PROP_FRAME_HEIGHT para la altura. El método get siempre devuelve float, así
+	que debemos castearlo a otros tipos de datos según nuestras necesidades.
+
+	VideoWriter se instancia con el URI, el codec, los fps y el tamaño del archivo a escribir. El codec que pongamos designará la 
+	extensión que debemos utilizar y es un flag que obtendremos con la función cv2.VideoWriter_fourcc(*f"{codec}").
+
+	Para leer el video utilizamos la función read de VideoCapture. Ésta lee frame el siguiente frame del video cada vez que se la
+	invoca y no necesita argumentos y nos devuelve dos valores: un booleano que será True si la lectura del frame fue exitosa y 
+	el frame leído. Gracias al booleano podemos hacer fácilmente un bucle while que lea el video entero.
+	
+	De forma análoga el método write de VideoCapture escribe frame por frame el video. El único argumento que necesita es el frame
+	a escribir, que será una imágen.
