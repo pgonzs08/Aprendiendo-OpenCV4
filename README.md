@@ -83,7 +83,7 @@ Día Miércoles 13 de Septiembre de 2023:
 	LEYENDO Y ESCRIBIENDO ARCHIVOS DE VIDEO
 
 	Quiero mencionar que para la sección de video he utilizado una animación hecha por el grupo de Alejandro Fernández Gómez en la
-	asignatura de animación por computador del grado de ingeniería informática en león. 
+	asignatura de animación por computador del grado de ingeniería informática en león. Su github es: https://github.com/aljfergo. 
 
 	Para leer y escribir video opencv proporciona dos clases: VideoCapture y VideoWriter.
 
