@@ -103,3 +103,44 @@ Día Miércoles 13 de Septiembre de 2023:
 	
 	De forma análoga el método write de VideoCapture escribe frame por frame el video. El único argumento que necesita es el frame
 	a escribir, que será una imágen.
+
+Día Jueves 14 de Septiembre de 2023:
+
+	CAPTURANDO FRAMES DE LA CÁMARA:
+
+	Para capturar frames de una cámara utilizamos VideoCapture, pero en lugar de poner el URI de un archivo de video pasamos como argumento
+	el índice de la cámara a capturar. Extraer las características de la cámara no es tan sencillo como extraerlas de un archivo de video.
+	Intentar obtener el framerate de una cámara con VidoeCapture.get normalmente devolverá 0 y en algunas ocasiones aunque devuelva un valor
+	éste será distinto a los fps, por tanto al capturar de la cámara debemos asumir ésta caracterísitca o medirla. 
+
+	Las dimensiones de la imágen obtenidas a través de VideoCApture.get también pueden no ser precisas, una medida precisa de obtener tales
+	dimensiones es extraerlas de un frame leído con éxito. Otra fuente de problemas respecto a las dimensiones de la cámara es que algunas
+	cámaras graban de manera inestable al encenderlas y los frames que extraen tienen dimensiones distintas. Éste problema se puede resolver
+	ignorando los primeros frames que se lean de tales cámaras.
+
+	MOSTRANDO UNA IMÁGEN EN UNA VENTANA
+
+	Para mostrar una imágen en una ventana opencv nos proporciona la función imshow, que toma como argumentos el nombre de la ventana en forma
+	de string y la imágen a mostrar. Cuando se ejecute, se abrirá una ventana cuando se llame a la función de opencv waitKey. La función waitKey
+	tiene un argumento opcional entero. Éste argumento dicta cuánto tiempo en milisegundos va a esperar la función y devolverá cualquier tecla 
+	pulsada en éste periodo. Si no se pasa ningún argumento se dejará de esperar al pulsar la primera tecla. Cuando acaba el periodo de espera 
+	sin que se haya pulsado ninguna tecla devuelve -1.
+
+	Otra función importante a la hora de manejar ventanas en opencv es destroyAllWindows, que cierra todas las ventanas que han sido creadas por 
+	opencv.
+
+	MOSTRANDO FRAMES DE LA CÁMARA EN UNA VENTANA
+
+	Uniendo todo podemos crear un programa que muestre el video capturado por la cámara en directo. Para ello tenemos que tener en cuenta que llamar
+	a imshow redibuja las ventana pasada como argumento si ésta ya está abierta, actualizando la imágen que muestra, pero nunca antes de invocar a 
+	waitKey.
+
+	Para ésta sección es relevante hablar de la programación orientada a eventos en opencv. La función namedWindow de opencv abre una ventana nombrada
+	con el argumento que le pasemosa a la que podemos asignar manejadores de eventos con funciones como setMouseCallBack, que toma como argumentos
+	el nombre de la ventana a la que queremos asignar la manejadora y la propia función manejadora del evento. Las funciones manejadores que pasemos a
+	setMouseCallback deben de aceptar los argumentos posicionales event, x, y, flags y param.
+
+	Los argumentos event y flag de las manejadores de setMouseCallback nos indican qué acción se ha cometido exactamente con el ratón y en qué condi-
+	ciones, respectivamente.
+
+	Las opciones de manejo de eventos en ventans son limitadas y por tanto se suele integrar opencv en otros frameworks 

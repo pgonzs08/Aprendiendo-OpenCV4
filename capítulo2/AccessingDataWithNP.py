@@ -1,5 +1,6 @@
 import numpy as np
 import cv2
+import sys
 
 #Gracias a los arrays de numpy podemos realizar operaciones sobre las
 #imágenes de opencv que no están disponibles en las listas de python.
@@ -24,7 +25,7 @@ image[:,:,1] = 255
 
 cv2.imwrite("Verde.png", image)
 
-image = cv2.imread("Foto_CV.JPG")
+image = cv2.imread(sys.argv[1])
 
 right_side = image[:,image.shape[1]//2:,:]
 cv2.imwrite("lado_derecho.png", right_side)
@@ -34,4 +35,4 @@ inverted_right_side = right_side[:,::-1,:]
 
 #Sustituimos el ojo izquierdo por el derecho
 image[:,:image.shape[1]//2,:] = inverted_right_side
-cv2.imwrite("FotoSimetrica.png", image)
+cv2.imwrite(sys.argv[2], image)
