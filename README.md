@@ -143,4 +143,31 @@ Día Jueves 14 de Septiembre de 2023:
 	Los argumentos event y flag de las manejadores de setMouseCallback nos indican qué acción se ha cometido exactamente con el ratón y en qué condi-
 	ciones, respectivamente.
 
-	Las opciones de manejo de eventos en ventans son limitadas y por tanto se suele integrar opencv en otros frameworks 
+	Las opciones de manejo de eventos en ventans son limitadas y por tanto se suele integrar opencv en otros frameworks
+
+Día Viernes 15 de Septiembre de 2023
+
+	PROYECTO CAMEO: SEGUIMIENTO DE CARAS Y MANIPULACIÓN DE IMÁGENES
+
+	OpenCV se estudia como un libro de recetas en el que se cubren una gran variedad de algoritmos, pero nada sobre el desarrollo de aplicaciones
+	a alto nivel debido a la gran diversidad de aplicaciones potenciales de ésta biblioteca. En éste libro los autores creen que se puede aprender
+	OpenCV creando aplicaciones en las que se implementen ejemplos en componentes extensibles y reusables.
+
+	La aplicación que se desarrolla en ésta sección es una aplicación interactiva que realiza seguimiento facial y manipulación de imágenes en in-
+	puts de la cámara en tiempo real.
+
+	Específicamente la aplicación mezclará caras en tiempo real, dados dos treams de cámara, la aplicación superpondrá caras de un stream sobre
+	caras del otro. Se aplicarán filtros y distorsiones para dar a ésta escena mezclada un aspecto y sensación unificados. Los usuarios deben te-
+	ner la experiencia de estar inmersos en un espectáculo en vivo donde entran otro entorno y personaje. Una experiencia popular en parques de
+	atracciones como Disneylandia.
+
+	Se probarán distintas estrategias con el fin de minimizar los fallos notables por los usuarios. La aplicación se llamará Cameo.
+
+	CAMEO - DISEÑO ORIENTADO A OBJETOS
+
+	Con el fin de promover la modularidad y la accesibilidad la aplicación se desarrollará Orientada a Objetos. Crearemos las clases CAptureMana-
+	ger y WindowManager como interfaces I/O de alto nivel. CaptureManager tendrá la misión de leer nuevos frames y opcionalmente mandar ese frame
+	a uno o más outputs entre los que se incluirán ventanas (A través de WindowManager), archivos de video y archivos de imágen. WindowManager ten-
+	drá la misión de manejar una ventana y eventos en estilo orientado a objetos.
+	
+	Ambas clases son extensibles. Debemos hacer implementaciones que no sean dependientes de I/O de OpenCV.
