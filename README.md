@@ -231,8 +231,32 @@ Día Viernes 15 de Septiembre de 2023
 
 	HPFS Y LPFS
 
-	Un filtro HPF examina una región de una imágen y potencia la intensidad de los píxeles basada en la diferencia de intensidad de sus vecinos.
-	
+	Un filtro HPF examina una región de una imagen y potencia la intensidad de los píxeles basada en la diferencia de intensidad de sus vecinos.
+
+	Un filtro LPF examina una región de una imagen y lo suaviza si la diferencia con sus vecinos es menor que un cierto threshold.
+
+	Para aprender más de filtros para la convolución y la correlación recomiendo personalmente leer:
+		 Correlation and Convolution. Class Notes for CMSC 426, Fall 2005 David Jacobs
+
+	En ese paper se entra en más profundidad en la naturaleza de las operaciones de convolución y correlación (las operaciones que se realizan para apli-
+	car los filtros nombrados), filtros customizados basados en la campana de Gauss, algoritmos eficientes y las series de Fourier.
+
+	Las funciones de opencv y scipy que nos permiten aplicar filtros son:
+
+	cv2.GaussianBlur: Toma como argumentos la imagen, el tamaño del kernel Gaussiano, los valores sigmaX y sigmaY (David Jacobs) y borderType, que es un
+	un flag para decidir qué padding utilizar en los bordes de la imagen.
+
+	ndimage.convolve: Toma como argumentos la imagen y el kernel de convolución 2D
+
+	cv2.filter2D: Una imágen y un kernel de convolución 2D
+
+	cv2.sepFilter2D: Una imágen y dos kernel de convolución 1D que conforman un kernel de convolución 2D juntos (razones para esto también en David Jacobs)
+
+	CREANDO MÓDULOS
+
+	Vamos a modificar el proyecto Cameo empezado en el capítulo2 para que aplique filtros a las imágenes capturadas en tiempo real. Los filtros tienen que
+	poder ser reusados fuera de Cameo. Creamos los archivos filters.py y utils.py donde guardaremos filtros y funciones matemáticas de propósito general,
+	respectivamente.
 	
 
 	
