@@ -171,3 +171,69 @@ Día Viernes 15 de Septiembre de 2023
 	drá la misión de manejar una ventana y eventos en estilo orientado a objetos.
 	
 	Ambas clases son extensibles. Debemos hacer implementaciones que no sean dependientes de I/O de OpenCV.
+
+	
+	-----------------------------------------------------------------------------------------------
+
+	Capítulo 3:
+
+		Éste capítulo cubre:
+
+		- Convertir imágenes entre diferentes modelos de colores
+		- Entender la importancia de las frecuencias y la transformada de Fourier en procesamiento de imágenes
+		- Aplicar filtros de paso alto (HPFs), filtros de paso bajo (LPFs), filtros de detección de bordes y filtros de convolución customizados
+		- Detectar y analizar contornos, líneas, círculos y otras formas geometricas
+		- Escribir Clases y funciones que encapsulen la implementación de un filtro
+
+	Para éste capítulo se usan las librerías OpenCv, Numpy y Scipy.
+
+	CONVIRTIENDO IMÁGENES ENTRE DIFERENTES MODELOS DE COLOR
+
+	OpenCV implementa cientos de fórmulas relacionadas con la conversión entre modelos de colores. Algunos modelos de colores son usados comúnmente
+	por dispositivos de input domo cámaras, miento que otros modelos son usados por dispositivos de output como impresoras y pantallas. La Visión por
+	computador suele trabajar con tres modelos de colores: grayscale, BGR y HSV (escala de grises, azul-verde-rojo, tono-saturación-valor):
+
+	· Grayscale es un medole que reduce la informacín de color traduciéndola en sombras de gris o luminosidad. Éste modelo es extremadamente útil
+	para el procesamiento intermedio de imágenes en problemas donde la información de luminosidad por sí sola es suficiente, como detección de rostros.
+	Típicamente, cada pixel en escala de grises es representado po un único valor de 8 bits, desde el 0 para el negro hasta el 255 para el blanco.
+
+	· BGR es el modelo de color azul-verde-rojo, en el que cada pixel tiene un triplete de valores representando los componentes azul, verde y rojo 
+	o cada canal de color. Los desarrolladores web, y cualquiera que trabaje con gráficos por computador, está familiarizado con una definición similar,
+	excepto con el orden de los canales invertidas. Típicamente, cada pixel en BGR es representado por una tripleta de valores como [0,0,0] para el ne-
+	gro, [255, 0, 0] para el azul, [0,255,0] para el verde, [0,0,255] para el rojo y [255,255,255] para el blanco.
+
+	· El modelo HSV usa una tripleta de canales diferentes que representan el tono del color, la intensidad y el brillo.
+
+	Por defecto OpenCV utiliza el modelo BGR para representar cualquier imagen que cargue de un archivo o capture de una cámara.
+
+	LA LUZ NO ES PINTURA
+
+	El modelo de colores BGR se diferencia de la pintura normal en que mezclar colores en pintura se considera substractivo y en OpenCV mezclar colores
+	es aditivo, por eso la tripleta [0,255,255] (0 azul, máximo verde, máximo rojo) da amarillo.
+
+	EXPLORANDO LA TRANSFORMADA DE FOURIER
+
+	Gran parte del procesado aplicado a imágenes y videos en OpenCV tiene que ver con el concepto de la Transformada de Fourier en alguna medida. Joseph
+	Fourier fue un Matemática Francés del sifo XVIII que descubrió y popularizó muchos conceptos matemáticos. Estudió la física del calor y las matemá-
+	ticas de todas las cosas que pueden ser representadas por funciones de onda. En particular, observó que todas las onas son sólo la suma de funciones
+	sinusoides simples de diferentes frecuencias.
+
+	En otras palabras, las ondas que observas y olles a tu alrededor son la suma de otras ondas. Éste concepto es increíblemente útil al manipular imáge-
+	nes porque nos permite identificar regiones donde una señas, como los valores de los píxeles, camvia mucho y regiones donde no cambia tanto. Podemos
+	marcar arbitrariamente esta refiones como ruido o como refiones de interés, fondo u objeto, y más. Éstas son las frecuencias que hacen la imágen ori-
+	ginal, y tenemos el poder de separarlas para extrapolar datos interesantes de la imágen de forma que el ordenador lo pueda comprender.
+
+	Examinemos el concepto de espectro de magnitudas de una imágen usando la transformada de Fourier. El espectro de magnitudes de una imagen es otra i-
+	magen qie provee una representación de la imágen original en términos de sus cambios.
+
+	La transformada de Fourier es la base de muchos algoritmos que se usan para operaciones comunes de procesado de imágenes, como detección de bordes,
+	líneas o formas.
+
+	HPFS Y LPFS
+
+	Un filtro HPF examina una región de una imágen y potencia la intensidad de los píxeles basada en la diferencia de intensidad de sus vecinos.
+	
+	
+
+	
+
