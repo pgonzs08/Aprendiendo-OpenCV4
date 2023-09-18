@@ -175,6 +175,8 @@ Día Viernes 15 de Septiembre de 2023
 	
 	-----------------------------------------------------------------------------------------------
 
+Día Sábado 16 de Septiembre de 2023
+
 	Capítulo 3:
 
 		Éste capítulo cubre:
@@ -240,6 +242,8 @@ Día Viernes 15 de Septiembre de 2023
 
 	En ese paper se entra en más profundidad en la naturaleza de las operaciones de convolución y correlación (las operaciones que se realizan para apli-
 	car los filtros nombrados), filtros customizados basados en la campana de Gauss, algoritmos eficientes y las series de Fourier.
+
+Día Lunes 18 de Septiembre de 2023
 
 	Las funciones de opencv y scipy que nos permiten aplicar filtros son:
 
