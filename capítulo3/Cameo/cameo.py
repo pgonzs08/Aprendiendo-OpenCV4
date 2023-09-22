@@ -15,6 +15,8 @@ class Cameo(object):
     def __init__(self):
         self._windowManager = WindowManager('Cameo', self.onKeypress)
         self._captureManager = CaptureManager(cv2.VideoCapture(0), self._windowManager, True)
+        self._embossFilter = filters.EmbossFilter()
+        self._sharpenFilter = filters.SharpenFilter()
 
     def run(self):
         """Correr el bucle principal"""
@@ -22,10 +24,9 @@ class Cameo(object):
         while self._windowManager.isWindowCreated:
             self._captureManager.enterFrame()
             frame = self._captureManager.frame
-            filters.strokeEdges(frame, frame)
             if frame is not None:
-                # TODO: filtrar el frame (capítulo 3)
-                pass
+                filters.strokeEdges(frame, frame)
+                self._embossFilter.apply(frame, frame)
             self._captureManager.exitFrame()
             self._windowManager.processEvents()
 

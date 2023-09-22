@@ -262,6 +262,38 @@ Día Lunes 18 de Septiembre de 2023
 	poder ser reusados fuera de Cameo. Creamos los archivos filters.py y utils.py donde guardaremos filtros y funciones matemáticas de propósito general,
 	respectivamente.
 	
+Día Viernes 22 de Septiembre de 2023
 
+	KERNELS CUSTOMIZADOS - PONIÉNDONOS CONVOLUCIONADOS
+
+	En éste apartado se habla de cómo funciona la función filter2D introduciéndonos a unas pinceladas de qué es una convolución y explicándo más argumentos
+	de la función.
+
+	filter2D(src, -1, kernel, dest): src es la imágen original sobre la que se aplicará una convolución usando kernel. dest es la imágen de destino en la que
+	se guardará el resultado de la convolución y el segundo argumento especifíca la profundidad por canal de la imagen destino (cantidad de bits por canal). 
+	El valor negativo indica que la imagen de destino debe tener la misma profundidad que la imagen de origen.
+
+	En base a éste ejemplo añadimos dos nuevas clases a filters.py:
+
+	VConvolutionFiler que aplica una convolución a V (o todos los canales)
+
+	SharpenFilter(VConvolutioFilter) un filtro de afilado con un radio de un pixel. En ésta clase los valores del HPF aplicados suman a 1 de forma que podemos
+	mantener el color de la imágen.
+
+	Por si queremos crear una máscara que encuentre los bordes de una imágen creamos la clase
+
+	FindEdgesFilter(VConvolutionFilter) que hace lo mismo que Sharpen filter salvo por que la suma de los valores de su filtro asociado son 0 y por tanto los
+	borden quedan en blanco y los no bordes en negro.
+
+	También añadimos un filtro de desenfoque:
+	BlurFilter(VConvolutionFilter) un filtro de desenfoque con dos píxeles de radio
 	
+	Y un filtro de realzado
+	EmbossFilter(VConvolutionFilter)
+	
+	MODIFICANDO LA APLICACIÓN:
+
+	Ahora en el archivo cameo.py debemos importar filters e inicializar los filtros que usemos dontro de la clase Cameo. En el bucle principal es trivial aplicar
+	el filtro a los frames que capturemos.
+
 
