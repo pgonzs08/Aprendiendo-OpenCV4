@@ -296,4 +296,22 @@ Día Viernes 22 de Septiembre de 2023
 	Ahora en el archivo cameo.py debemos importar filters e inicializar los filtros que usemos dontro de la clase Cameo. En el bucle principal es trivial aplicar
 	el filtro a los frames que capturemos.
 
+Día Lunes 25 de Septiembre de 2023
+
+	DETECCIÓN DE BORDES CON CANNY
+
+	OpenCv ofrece una función llamada Canny (por el inventor del algoritmo John F. Canny) muy popular no sólo por su efectividad si no por la simpricidad de imple-
+	mentación en un entorno con OpenCV ya que se escribe en una sola línea:
+
+	cv2.Canny(img, 200, 300) por ejemplo.
+
+	El algoritmo Canny consiste en 5 pasos:
+	
+	1. Quitar el ruido con un filtro Gaussiano
+	2. Calcular los gradientes
+	3. Aplicar NMS a los bordes (Se explica en profundidad en el capítulo 7)
+	4. Aplicar un threshold doble para todos los bordes detectados para eliminar falsos positivos
+	5. Analizar todos los bordes y su conexión uno a otro para descartar bordes débiles
+
+	Los bordes detectados por Canny pueden ser analizados para comprobar si se unen en una figura común.
 
