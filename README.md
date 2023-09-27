@@ -315,3 +315,29 @@ Día Lunes 25 de Septiembre de 2023
 
 	Los bordes detectados por Canny pueden ser analizados para comprobar si se unen en una figura común.
 
+Día Miércoles 27 de Septiembre de 2023
+
+	DETECCIÓN DE CONTORNOS
+
+	Una tarea vital en la visión por computador es la detección de contornos. Queremos detectar contornos o líneas divisoras de sujetos contenidos en una imágen o el
+	frame de un video, no sólo como un fin por sí mismo si no como un paso hacia otras operaciones. Éstas operaciones son computar polígonos circunscritos, aproximar
+	formas y calcular regiones de interés. Las regiones de interés simplifican la interacción con datos de imagen porque una región rectangular en NumPy es fácilmente
+	definida como el slice de un array. Usaremos detección de contornos y regiones de interés mucho cuando exploremos los conceptos de detección y seguimiento de objetos.
+
+	Para detectar los contornos de una figura de una imágen utilizamos las funciones cv2.threshold y findContours
+
+	threshold toma como argumentos una imagen fuente, el valor del threshold, el valor máximo y el tipo de threshold y nos devuelve una imágen en la que todos los píxeles
+	que no superan el threshold son 0 y todos los que están en el rango adecuado son 255.
+
+	findContours toma como argumentos una imágen fuente, el modo y el método de encontrar los contornos.
+
+	Cuando pasamos el resultado de cv2.threshold a cv2. finCountours podremos encontrar fácilmente los contornos de la imágen. Para dibujarlos utilizamos la función
+	cv2.drawContours, que toma como argumentos la imágen destino, los contornos, el índice del contorno a dibujar (negativo para dibujar todos), el color de los contornos
+	y otras características del contorno a dibujar (grosor, tipo, etc.) 
+
+	CAJA CONTENEDORA, RECÁNGULA DE ÁREA MÍNIMA, CÍRCULO CONTENEDOR MÍNIMO
+
+	Encontrar los contornos de un cuadrado es simple; las formas irregulares, achatadas y rotadas son las que aprovechan el potencial completo de la función findContours.
+
+	En una aplicación de la vida real nos interesaría determinar la caja contenedora de un sujeto, el recángulo mínimo que lo recubre y el círculo mínimo que lo rodea. La
+	función cv2.findContours, en conjunción con otras utilidades de OpenCV, hace de ésta una tarea sencilla. Primero debemos //TODO: Acabar apartado
