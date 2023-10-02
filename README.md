@@ -340,4 +340,27 @@ Día Miércoles 27 de Septiembre de 2023
 	Encontrar los contornos de un cuadrado es simple; las formas irregulares, achatadas y rotadas son las que aprovechan el potencial completo de la función findContours.
 
 	En una aplicación de la vida real nos interesaría determinar la caja contenedora de un sujeto, el recángulo mínimo que lo recubre y el círculo mínimo que lo rodea. La
-	función cv2.findContours, en conjunción con otras utilidades de OpenCV, hace de ésta una tarea sencilla. Primero debemos //TODO: Acabar apartado
+	función cv2.findContours, en conjunción con otras utilidades de OpenCV, hace de ésta una tarea sencilla. Primero debemos convertir convertir la imagen que leamos a es-
+	cala de grises, después aplicamos el threshold y encontramos los contornos de la imagen. Para cada contorno, podemos encontrar y dibujar la caja contenedora, el rectán-
+	gulo de área mínima y el círculo de contenedor mínimo. Finalmente, dibujamos los contornos sobre la imágen a color y la mostrarmos.
+
+Día Lunes 2 de Octubre de 2023
+
+	CONTORNOS CONVEXOS Y EL ALGORITMO DOUGLAS-PEUKER
+
+	Cuando trabajamos con contornos, nos podemos encontrar objetos con diversas formas, incluyendo formas convexas. Una forma convexa es aquella en la que no hay dos puntos
+	en la figura a los cuales los une una línea que pase por fuera del perímetro de ésta.
+
+	La primera facilidad que nos ofrece OpenCV para calcular una aproximación de un polígono contenedor de una figura es con la función cv2.approxPolyDP. Ésta función toma 
+	tres parámetros:
+		·Un contorno
+		·Un valor épsilon que representa la máxima discrepancia entre el contorno original y el polígono aproximado (A menor valor, más se parecerá el polígono al contorno)
+		·Un boolean que indica si el polígono es o no cerrado.
+
+	El valor epsilon es de vital importancia para obtener un contorno útil, por eso debemos entender qué representa exactamente épsilon. Épsilon es la diferencia máxima de
+	perímetro que debe de haber entre el contorno original y la aproximación del polígono. Calcular el polígono aproximado es útil a nivel de computación porque representa
+	el contorno como un conjunto de rectas.
+
+	Podemos definir epsilon según el perímetro del contorno original gracias a la función cv2.arcLength que toma como parámetros el contorno y un flag booleano.
+
+	OpenCV también ofrece la función cv2.convexHull para obtener información de contorno procesada para figuras convexas.
